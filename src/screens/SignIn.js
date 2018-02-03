@@ -15,6 +15,12 @@ class SignIn extends Component{
         if(!loaded && !loading) getAuth()
     }
 
+    componentWillReceiveProps(nextProps) {
+        const {navigation, auth} = nextProps
+        if(auth.auth) navigation.navigate('Main')
+        console.log(navigation, auth.auth)
+    }
+
     render(){
         const {entities, loaded, loading, auth} = this.props.auth
         if(!loaded || loading) return <View style={styles.container}>
@@ -32,9 +38,8 @@ class SignIn extends Component{
     }
 
     handleSubmit = () => {
-        const {postAuth, navigation, auth} = this.props
+        const {postAuth} = this.props
         postAuth(this.state.data)
-        if(auth.auth) navigation.navigate('Main')
     }
 
     setValue = (item, value) => {

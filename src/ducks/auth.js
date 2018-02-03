@@ -72,12 +72,16 @@ export const getAuth = () => async dispatch => {
 
 export const postAuth = ({login, password}) => async dispatch => {
     const authentication = {login, password}
-    console.log(authentication)
     dispatch({
         type: AUTH_POST_REQUEST
     })
     try {
-        const {data} = await axios.post('https://api.vs9.nwaj.ru/v1/user/authentication', {authentication})
+        const {data} = await axios({
+            url: 'https://api.vs9.nwaj.ru/v1/user/authentication',
+            method: 'post',
+            data: {authentication}
+        })
+        console.log(data)
         dispatch({
             type: AUTH_POST_SUCCESS,
             payload: data
