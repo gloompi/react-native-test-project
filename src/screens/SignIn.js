@@ -11,14 +11,15 @@ class SignIn extends Component{
     }
 
     componentDidMount() {
-        const {getAuth, loaded, loading} = this.props
+        const {getAuth} = this.props
+        const {loaded, loading} = this.props.auth
         if(!loaded && !loading) getAuth()
     }
 
     componentWillReceiveProps(nextProps) {
         const {navigation, auth} = nextProps
         if(auth.auth) navigation.navigate('Main')
-        console.log(navigation, auth.auth)
+        console.log('component will receive props----', navigation, auth.auth)
     }
 
     render(){

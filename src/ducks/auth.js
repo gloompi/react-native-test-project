@@ -54,19 +54,21 @@ export const getAuth = () => async dispatch => {
         type: AUTH_GET_REQUEST
     })
     try {
-        const {data} = await axios.get('https://api.vs9.nwaj.ru/v1/forms/post/user/authentication')
+        await axios.get('https://api.testing.geesys.ru/v1/auth')
+        const {data} = axios.get('https://api.testing.geesys.ru/v1/forms/post/user/authentication')
         dispatch({
             type: AUTH_GET_SUCCESS,
             payload: {
-                response: data.authentication.children
+                response: data.authentication
             }
         })
+        console.log('get auth success---', data)
     } catch (error) {
         dispatch({
             type: AUTH_GET_FAIL,
             payload: error
         })
-        console.log(error)
+        console.log('get auth error---', error)
     }
 }
 
@@ -77,17 +79,17 @@ export const postAuth = ({login, password}) => async dispatch => {
     })
     try {
         const {data} = await axios({
-            url: 'https://api.vs9.nwaj.ru/v1/user/authentication',
+            url: 'https://api.testing.geesys.ru/v1/user/authentication',
             method: 'post',
             data: {authentication}
         })
-        console.log(data)
+        console.log('post auth success---', data)
         dispatch({
             type: AUTH_POST_SUCCESS,
             payload: data
         })
     } catch (error) {
-        console.log(error)
+        console.log('post auth error---', error)
         dispatch({
             type: AUTH_POST_FAIL,
             payload: error

@@ -7,6 +7,7 @@ class Main extends Component{
         const {auth} = this.props
         return(
             <View>
+                <Text>Main</Text>
             </View>
         )
     }

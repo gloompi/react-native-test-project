@@ -1,5 +1,8 @@
 {
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 27450,
+  "expoServerNgrokUrl": "https://rj-2ve.gloompi.react-native-test-project.exp.direct",
+  "packagerNgrokUrl": "https://packager.rj-2ve.gloompi.react-native-test-project.exp.direct",
+  "ngrokPid": 27519
 }
